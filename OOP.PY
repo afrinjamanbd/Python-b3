@@ -1,0 +1,66 @@
+student_names = ['Mohammad', 'Fatima', 'Ahmed', 
+            'Sumaiya', 'Rahman', 'Nusrat', 'Ali', 
+            'Aisha', 'Khan', 'Tasnim', 'mow']
+
+student_age = [23,27,25,21,30,28,22,26,24,29,28]
+
+# print all students name, who has m in their name and age below 25
+
+list_size =  len(student_names)
+
+# for i in range(list_size):
+#     if 'm' in student_names[i] and student_age[i] < 25:
+#         print(student_names[i])
+
+
+## Lenear search algo
+numbers = [45, 163, 36, 120, 32, 91, 55, 188, 104, 70, 27, 199, 67, 143, 36]
+
+lenght = len(numbers)
+
+flag = False
+
+for i in range(lenght):
+    if numbers[i] == 36:
+        print('found ' , numbers[i], ' in position ', i+1)
+        flag = True
+        # break
+if flag == False:
+        print('not found')
+        
+
+# for i in range(2,21):
+#     for j in range(1, 11):
+#         print(i, " x ", j, ' = ', i*j )
+
+
+
+# name = input('please write your name: ')
+
+# while name != '0':
+
+#     if name == 'Afrin':
+#         print("Hi Afrin! You are instruction." )
+#     elif name == 'Devskill':
+#         print('Oh its an org!')
+#     else:
+#         print('Hi '+ name)
+
+#     name = input('please write your name: ')
+
+
+git init 
+
+git status
+
+git add .
+
+git commit -m "my first change"
+
+
+
+
+
+
+
+
