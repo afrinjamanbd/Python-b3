@@ -1,84 +1,70 @@
-# student_names = ['Mohammad', 'Fatima', 'Ahmed', 
-#             'Sumaiya', 'Rahman', 'Nusrat', 'Ali', 
-#             'Aisha', 'Khan', 'Tasnim', 'mow']
+class A():
 
-# student_age = [23,27,25,21,30,28,22,26,24,29,28]
+    p = 3
+    q = 6
+    r = 12
 
-# # print all students name, who has m in their name and age below 25
+    def __init__(self, x, y, z):      
+        self.x = x
+        self.y = y
+        self.z = z
+        print(self.x)
+        print(A.p) 
 
-# list_size =  len(student_names)
+    def add(self):
+        return self.x + self.y
+    
+    def noSelf():
+        print('Working')
 
-# # for i in range(list_size):
-# #     if 'm' in student_names[i] and student_age[i] < 25:
-# #         print(student_names[i])
+         
+# obj_a1 = A(2, 3, 4)
+# a = obj_a1.add()
+# print(type(a))
 
 
-# ## Lenear search algo
-# numbers = [45, 163, 36, 120, 32, 91, 55, 188, 104, 70, 27, 199, 67, 143, 36]
-
-# lenght = len(numbers)
-
-# flag = False
-
-# for i in range(lenght):
-#     if numbers[i] == 36:
-#         print('found ' , numbers[i], ' in position ', i+1)
-#         flag = True
-#         # break
-# if flag == False:
-#         print('not found')
-        
-
-# for i in range(2,21):
-#     for j in range(1, 11):
-#         print(i, " x ", j, ' = ', i*j )
+# obj_a2 = A('hI ', "welcome", "Here")
+# print(obj_a2.add())
 
 
 
-# name = input('please write your name: ')
+class B(A):
+    
+    a = 20
+    b = 30
+    c = 40
 
-# while name != '0':
+    def __init__(self, b1, b2):
+        # super().__init__(30, B.b , B.c)
+        self.bOne = b1
+        self.bTwo = b2
 
-#     if name == 'Afrin':
-#         print("Hi Afrin! You are instruction." )
-#     elif name == 'Devskill':
-#         print('Oh its an org!')
-#     else:
-#         print('Hi '+ name)
+    
+    def printing(self, exttraText):
+        print(exttraText + self.bOne)
+        print(exttraText + self.bTwo)
+        print(B.p)
+        print(self.add())
 
-#     name = input('please write your name: ')
-
-
-array = [1, 5 ,24, 36, 47, 66, 78, 79, 89, 95]
-
-target = int(input('Which number to find? : ')) 
- 
-low = 0
-
-high = len(array)
-
-if array[0] == target:
-    print('found in 1st position')
-
-elif array[high - 1] == target:
-    print('found in last position')
-
-else:
-    while(low <= high):
-
-        mid = int((low+high)/2) #8
-
-        if array[mid] == target:
-                print(mid + 1)
-                break
-
-        elif array[mid] < target:
-                low = mid + 1 # 9
-
-        else :
-               high = mid - 1 # 7
-
-    if (high < low):
-      ('not found')
+    def add(self):
+        return "adding "
+    
 
 
+class C(B):
+    def __init__(self):
+        self.x = 30
+        self.y = 50
+        print('Class C Calling ')
+
+    def add(self):
+        print('Class C add')
+
+
+
+obj_c1 = C()
+obj_c1.add()
+
+obj_b1 = B("Afrin", "Devskill")
+
+# obj_b1.printing("How are you, ")
