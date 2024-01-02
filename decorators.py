@@ -105,4 +105,29 @@ def sample_func_as_arg(user, password):
 def secret_code(user, password, ishead = False):
     return "2345"
 
-print(secret_code("admin", "1234", ishead = False))
+# print(secret_code("admin", "1234", ishead = False))
+
+
+
+
+def decorator_func3(sample_func):
+    def wrapper_func():
+        print("caliing decorator_func3!!!")
+        return sample_func()
+    return wrapper_func
+
+
+def decorator_func4(sample_func):
+    def wrapper_func():
+        print("caliing decorator_func4!!!")
+        return sample_func()
+    return wrapper_func
+
+
+@decorator_func3
+@decorator_func4
+def sample_func_as_arg2():
+    print("hello ################")
+
+
+sample_func_as_arg2()
