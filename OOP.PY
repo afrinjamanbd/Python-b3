@@ -49,36 +49,66 @@
 #     name = input('please write your name: ')
 
 
-array = [1, 5 ,24, 36, 47, 66, 78, 79, 89, 95]
+# array = [1, 5 ,24, 36, 47, 66, 78, 79, 89, 95]
 
-target = int(input('Which number to find? : ')) 
+# target = int(input('Which number to find? : ')) 
  
-low = 0
+# low = 0
 
-high = len(array)
+# high = len(array)
 
-if array[0] == target:
-    print('found in 1st position')
+# if array[0] == target:
+#     print('found in 1st position')
 
-elif array[high - 1] == target:
-    print('found in last position')
+# elif array[high - 1] == target:
+#     print('found in last position')
 
-else:
-    while(low <= high):
+# else:
+#     while(low <= high):
 
-        mid = int((low+high)/2) #8
+#         mid = int((low+high)/2) #8
 
-        if array[mid] == target:
-                print(mid + 1)
-                break
+#         if array[mid] == target:
+#                 print(mid + 1)
+#                 break
 
-        elif array[mid] < target:
-                low = mid + 1 # 9
+#         elif array[mid] < target:
+#                 low = mid + 1 # 9
 
-        else :
-               high = mid - 1 # 7
+#         else :
+#                high = mid - 1 # 7
 
-    if (high < low):
-      ('not found')
+#     if (high < low):
+#       ('not found')
+
+
+my_data = {
+    "name": "Afrin",
+    "age" : 15,
+    "class" : 9,
+    "school": {
+        "name" : "xyz",
+        "address" : None
+    },
+    "mother" : {
+        "name": "My mom",
+        "age" : None,
+        "mother" : {
+            "name": None,
+            "age" : 45,
+        }
+    }
+}
+
+
+def recurse(my_data: dict):
+    for k, v in my_data.items():
+        if isinstance(v, dict):
+            return recurse(v)
+        if v == None:
+            my_data[k] = "no val"
+
+print(recurse(my_data))
+
 
 

@@ -83,6 +83,7 @@ def record(userType : str,  input_no : int):
 
 
 
+
 userType = input('Enter the user type: ') 
 
 input_no = int(input(f'How many {userType}s info you want to record? : ')) 
