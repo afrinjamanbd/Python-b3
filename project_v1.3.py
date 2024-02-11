@@ -1,4 +1,5 @@
 from abc import ABC,abstractclassmethod
+import json
 
 class Rules(ABC):
 
@@ -10,17 +11,15 @@ class Rules(ABC):
 class School():
     def __init__(self, val) -> None:
         self.val = val
-
+        self.info_list = [[],[],[]]
 
     def __record(self, userType : str,  input_no : int):
-
-            self.info_list = []
 
             for j in range(input_no):
 
                 info = {}
 
-                print(f'\nPlease add a {userType}"s info. Kindly enter stop to turminate.')
+                print(f'\nPlease add a {userType}"s info. Kindly enter "stop" to turminate.')
                 key = input(f'Enter first key: ')
 
                 if key != "":
@@ -59,26 +58,55 @@ class School():
 
                     info["Classes"] = class_list       
 
-                self.info_list.append(info)   
+                if userType == "Student":
+                    file = open('data.json')
+                    previos_data = json.load(file)
+                    previos_data[0]["student"].append(info)
+                    file1 = open('data.json', 'w')
+                    new_data = str(previos_data).replace("'",'"')
+                    file1.write(new_data)
 
-            return self.info_list  #[[], [], []]
 
-    def total_info(self):
+                elif userType == "Teacher":
+                    file = open('data.json')
+                    previos_data = json.load(file)
+                    previos_data[1]["teacher"].append(info)
+                    file1 = open('data.json', 'w')
+                    new_data = str(previos_data).replace("'",'"')
+                    file1.write(new_data)
+
+                elif userType == "HR":
+                    file = open('data.json')
+                    previos_data = json.load(file)
+                    previos_data[2]["hr"].append(info)
+                    file1 = open('data.json', 'w')
+                    new_data = str(previos_data).replace("'",'"')
+                    file1.write(new_data)
+
+                else:
+                    return False
+
+            return True
+
+    def total_info(self): 
+        file = open('data.json')
+        data = json.load(file)
+        return len(data[0]['student']), len(data[1]['teacher']), len(data[2]['hr'])
+    
+
+    def add_record(self):
         userType = input("Enter user type: ")
         userNo = int(input("Enter total user no: "))
         self.__record(userType,userNo)
-        return len(self.info_list[0]), len(self.info_list[1]), len(self.info_list[2])
 
-hr = HR({"name" : "Afrin"})
-hr2 = HR({"name" : "Mithila"})
 
 class HR(School, Rules): 
     def __init__(self, data) -> None:        
         self.__HR_data = data
         self.hr_name = data["name"]
-        print(self.hr_name[:3])
         super().__init__(3)
         self.totalStudent, self.totalTeacher, self.totalHR = self.total_info()
+        print(self.totalStudent, self.totalTeacher, self.totalHR)
     
     
     def individualRules(self):
@@ -167,7 +195,6 @@ Seek help from teachers when needed to understand and complete assignments.
 
 
 
-
-
 new_HR = {"name": "Sabrina","salary": 8000}
 obj_hr = HR(new_HR)
+obj_hr.add_record()
